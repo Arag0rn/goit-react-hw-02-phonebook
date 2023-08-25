@@ -7,8 +7,8 @@ export const ContactForm  = ( {onAdd}) =>{
         <div>
         <Formik
       initialValues={{
-        Name: '',
-        Number: '',
+        name: '',
+        number: '',
       }}
       onSubmit={(values, action) => {
         onAdd(values);

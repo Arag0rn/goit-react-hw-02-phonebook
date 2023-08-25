@@ -23,15 +23,29 @@ export class App extends Component{
         id: nanoid(), 
         ...NewContact}] }) )
  }
+
+ deleteContact = contactID => {
+  this.setState(prevState =>({
+    contacts: prevState.contacts.filter(cont => cont.id !== contactID)
+  }))
+ }
+
+ onChangeFilter = newFilter => {
+  this.setState ({
+    filter: newFilter
+  });
+ }
   render() {
+
+    const searchContact = this.state.contacts.filter( cont => cont.name.toLowerCase().includes(this.state.filter.toLowerCase()));
     return (
       <div>
       <h1>Phonebook</h1>
-      <ContactForm  onAdd={this.addContact}/>
+      <ContactForm  onAdd={this.addContact} />
     
       <h2>Contacts</h2>
-      <Filter  />
-      <ContactList  items={this.state}/>
+      <Filter  filter={this.state.filter} onChangeFilter={this.onChangeFilter}/>
+      <ContactList  items={searchContact} onDelete={this.deleteContact}/>
     </div>
   );}
 }
