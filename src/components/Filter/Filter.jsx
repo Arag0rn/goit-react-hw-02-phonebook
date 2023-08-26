@@ -1,12 +1,13 @@
+import { StyledDiv, InputFilter } from "./Filter.styled"
 
 export const Filter  = ({onChangeFilter, filter}) =>{
 
-    return <div>
-        <input type="text" 
+    return <StyledDiv>
+        <InputFilter type="text" 
         value={filter} 
         placeholder="Search"
         onChange={event => onChangeFilter(event.target.value)}/>
-       </div>
+       </StyledDiv>
 
   
 }

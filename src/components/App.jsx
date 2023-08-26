@@ -1,9 +1,10 @@
 
 import { Component } from "react";
-import { ContactForm } from "./ContactForm";
-import { ContactList } from "./ContactList";
-import { Filter } from "./Filter";
+import { ContactForm } from "./ContactForm/ContactForm";
+import { ContactList } from "./ContactList/ContactList";
+import { Filter } from "./Filter/Filter";
 import { nanoid } from 'nanoid'
+import { H1styled, H2styled} from "./Title.styled";
 export class App extends Component{
   state = {
     contacts: [
@@ -40,10 +41,10 @@ export class App extends Component{
     const searchContact = this.state.contacts.filter( cont => cont.name.toLowerCase().includes(this.state.filter.toLowerCase()));
     return (
       <div>
-      <h1>Phonebook</h1>
+      <H1styled>Phonebook</H1styled>
       <ContactForm  onAdd={this.addContact} />
     
-      <h2>Contacts</h2>
+      <H2styled>Contacts</H2styled>
       <Filter  filter={this.state.filter} onChangeFilter={this.onChangeFilter}/>
       <ContactList  items={searchContact} onDelete={this.deleteContact}/>
     </div>
